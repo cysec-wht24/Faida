@@ -1,7 +1,15 @@
 "use client";
 import React, { useState, useEffect, useCallback } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../../components/ui/sidebar";
-import { IconArrowLeft, IconSettings, } from "@tabler/icons-react";
+
+import {
+  IconSettings,
+  IconWallet,
+  IconAnalyze,
+  IconAi,
+  IconDashboard,
+} from "@tabler/icons-react";
+
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "../../../lib/utils";
@@ -62,10 +70,31 @@ export default function SidebarDemo() {
 
   const links = [
     {
-      label: "Settings",
-      href: "#",
+    label: "Dashboard",
+    href: "/profile",
+    icon: (
+      <IconDashboard className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
+    ),
+    },
+    {
+      label: "Your Inputs",
+      href: "/profile/inputs",
       icon: (
         <IconSettings className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
+      ),
+    },
+    {
+      label: "Wallet Status",
+      href: "/profile/wallets",
+      icon: (
+        <IconWallet className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
+      ),
+    },
+    {
+      label: "Analysis",
+      href: "/profile/analysis",
+      icon: (
+        <IconAnalyze className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
       ),
     },
   ];
@@ -73,12 +102,13 @@ export default function SidebarDemo() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={cn("mx-auto flex w-full flex-1 flex-col overflow-hidden rounded-md border border-neutral-200 bg-gray-100 md:flex-row dark:border-neutral-700 dark:bg-neutral-800 h-screen")}>
+    <div className={cn("mx-auto flex w-full flex-2 flex-col overflow-hidden rounded-md border border-neutral-200 bg-gray-100 md:flex-row dark:border-neutral-700 dark:bg-neutral-800 h-screen")}>
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="justify-between gap-10">
           <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
             <Logo />
-            <div className="mt-8 flex flex-col gap-2">
+            <div className="flex flex-1"></div>
+            <div className="mt-8 flex flex-3 flex-col gap-4">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} />
               ))}
@@ -96,7 +126,7 @@ export default function SidebarDemo() {
 export const Logo = () => {
   return (
     <Link
-      href="#"
+      href="/"
       className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-black">
       <Image
         src="/startup_icon.ico" // Place the file in /public
