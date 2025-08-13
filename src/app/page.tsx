@@ -11,16 +11,13 @@ export default function BackgroundBeamsDemo() {
       text: "Manage",
     },
     {
-      text: "playlists",
-    },
-    {
-      text: "YOUR way",
+      text: "finances",
     },
     {
       text: "with",
     },
     {
-      text: "PlayStar.",
+      text: "FAIda.",
       className: "text-blue-500 dark:text-blue-500",
     },
   ];
